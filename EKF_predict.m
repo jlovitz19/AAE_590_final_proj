@@ -11,7 +11,7 @@ function [x_k_km1, P_k_km1] = EKF_predict(x_km1_km1, P_km1_km1, k)
     % P_km1_km1: a preori state covariance at current time step
 
     % ode shenanigans
-    tint = k - 1:k;
+    tint = k - 1:0.5:k;
     opts = odeset("RelTol", 1e-3, "AbsTol", 1e-6);
     f = @(t, x) EoMs(x);
     
