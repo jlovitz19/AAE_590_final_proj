@@ -22,5 +22,5 @@ function [x_k_km1, P_k_km1] = EKF_predict(x_km1_km1, P_km1_km1, k)
     % covariance
     F_k = dynamics_jacobian(x_km1_km1);
     F_k = reshape(F_k, 6, 6);
-    P_k_km1 = F_k*P_km1_km1*F_k.' + diag([10, 10, 0.01^2, 0.0001^2, 0.01^2, 0.001^2]); % + diag([chol(1e-8, "lower"), chol(1e-16, "lower"), chol(1e-16, "lower"), chol(1e-16, "lower"), chol(1e-16, "lower"), chol(1e-16, "lower")]); % for now, ignore + Q_k; %% ?? noise
+    P_k_km1 = F_k*P_km1_km1*F_k.' + diag([10, 10, 0.01^2, 0.0001^2, 0.01^2, 0.001^2]);
 end
